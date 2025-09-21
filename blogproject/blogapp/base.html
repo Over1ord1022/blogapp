@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Блог Платформа{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body.theme-light {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --header-bg: #f8f9fa;
+        }
+        body.theme-dark {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --header-bg: #2d2d2d;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="theme-{{ preferences.theme }}">
+    <header>
+        <nav>
+            <div class="logo">
+                <h1> Блог Платформа</h1>
+            </div>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Главная</a>
+                <a href="{% url 'preferences' %}">Настройки</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2024 Блог Платформа. Все права защищены.</p>
+    </footer>
+</body>
+</html>
